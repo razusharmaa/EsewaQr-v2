@@ -18,7 +18,7 @@ const Navbar_Main = () => {
   };
 
   return (
-    <Navbar fluid>
+    <Navbar fluid >
       <Navbar.Brand href="https://flowbite-react.com">
         <img src="/images/eSewa_Nav.png" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
       </Navbar.Brand>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Card, Dropdown } from "flowbite-react";
 import { QRCode } from "react-qrcode-logo";
 import html2canvas from "html2canvas";
+import { IMAGES } from "../images/Images";
 
 export default function QrResult(props) {
   let {
@@ -144,7 +145,7 @@ export default function QrResult(props) {
             value={Bank.decodedCode}
             size={256} // Smaller size for display
             {...(qrQ ? { ecLevel: qrQ } : {})}
-            logoImage={`/images/esewaC.png`}
+            logoImage={IMAGES.QRc_esewa}
             logoWidth={40}
             logoHeight={40}
             removeQrCodeBehindLogo={true}
@@ -161,7 +162,7 @@ export default function QrResult(props) {
           />
         )}
         <img
-          src="/images/esewa_logo.png"
+          src={IMAGES.esewaLogo} 
           alt="eSewa Logo"
           className="h-14 object-contain my-3"
         />

@@ -5,12 +5,12 @@ const Home = () => {
   return (
     <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
       <Service_type
-        logo={"esewa_logo"}
+        logo={"esewaLogo"}
         name={"Esewa Qr"}
         desc={"Customize your eSewa Qr code"}
       />
       <Service_type
-        logo={"khalti_logo"}
+        logo={"khaltiLogo"}
         name={"Khalti Qr"}
         desc={"Customize your Khalti Qr code"}
       />

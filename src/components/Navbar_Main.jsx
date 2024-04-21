@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../features/theme/themeSlice"; // Adjust the import path as needed
 import { Navbar, DarkThemeToggle } from "flowbite-react";
+import { IMAGES } from "../images/Images";
 
 const Navbar_Main = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -21,7 +22,7 @@ const Navbar_Main = () => {
     <Navbar fluid>
       <Navbar.Brand href="https://flowbite-react.com">
         <img
-          src="/images/eSewa_Nav.png"
+          src={IMAGES.Navlogo} 
           className="mr-3 h-6 sm:h-9"
           alt="Flowbite React Logo"
         />

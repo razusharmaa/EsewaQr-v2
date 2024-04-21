@@ -2,6 +2,7 @@ import React from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { Button, Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
+import { IMAGES } from '../images/Images'
 
 const Service_type = ({ logo, name, desc }) => {
   let navigate = useNavigate();
@@ -9,11 +10,12 @@ const Service_type = ({ logo, name, desc }) => {
     const dataToSend = { type: logo };
     navigate("/input", { state: dataToSend });
   }
+
   return (
     <Card
       className="z-0"
       imgAlt="Meaningful alt text for an image that is not purely decorative"
-      imgSrc={`/images/${logo}.png`}
+      imgSrc={IMAGES[logo]} // Use bracket notation here
     >
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {name}

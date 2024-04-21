@@ -57,7 +57,7 @@ export default function Truning_Effect() {
       className={`${CSS1.TE} ${isFinished ? CSS1.slideOutAndCurve : ""} z-5`}
     >
       <div className={CSS1.txt}>
-        <GoDotFill style={{ fontSize: "13px", paddingRight: "12px" }} />
+        <GoDotFill style={{ fontSize: "25px", paddingRight: "12px" }} />
         {txt}
       </div>
     </div>

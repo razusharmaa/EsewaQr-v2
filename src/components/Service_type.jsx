@@ -3,14 +3,15 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { Button, Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 
-const Service_type = ({ logo, name,desc }) => {
-    let navigate = useNavigate();
-    function handleClick() {
-      const dataToSend = { 'type':logo,};
-      navigate('/input', { state: dataToSend });
-    }
+const Service_type = ({ logo, name, desc }) => {
+  let navigate = useNavigate();
+  function handleClick() {
+    const dataToSend = { type: logo };
+    navigate("/input", { state: dataToSend });
+  }
   return (
     <Card
+      className="z-0"
       imgAlt="Meaningful alt text for an image that is not purely decorative"
       imgSrc={`/images/${logo}.png`}
     >
@@ -18,8 +19,9 @@ const Service_type = ({ logo, name,desc }) => {
         {name}
       </h5>
       <p className="font-normal text-gray-700 dark:text-gray-400">{desc} </p>
+
       <Button onClick={handleClick}>
-       Start
+        Start
         <FaLongArrowAltRight className="ml-2 mt-1" />
       </Button>
     </Card>

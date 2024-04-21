@@ -10,31 +10,53 @@ const Output = () => {
 
   return (
     <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <QrResult type='Default' qrM="circle" />
+      <QrResult type="Default" qrM="circle" />
+
       <QrResult
-      type='Square'
-        ec="H"
-        outerM="#35374B"
-        outerR={[10, 0,0, 10]}
-        innerR={[10, 0,0,0]}
-        innerM="#344955"
-        qrbox="square"
-        qrM="circle"
-        colorM="#78A083"
-      />
-      <QrResult
-      type='Gol Gol'
+        type="Classic"
+        tleO={[10, 10, 0, 10]}
+        tleI={[10, 10, 0, 10]}
+        treO={[10, 10, 10, 0]}
+        treI={[10, 10, 10, 0]}
+        tbeO={[10, 0, 10, 10]}
+        tbeI={[10, 0, 10, 10]}
         ec="Q"
-        outerM="red"
+        outerM="#1E5128"
+        innerM="#4E9F3D"
+        colorM="#191A19"
+        qrM="circle"
+      />
+
+      <QrResult
+        type="Gol Gol"
+        ec="Q"
+        outerM="#2C7865"
         outerR={[20, 20, 20, 20]}
         innerR={[10, 10, 10, 10]}
-        innerM="blue"
+        innerM="#5DEBD7"
         qrbox="dots"
         qrM="circle"
         colorM="#23a646"
       />
-      
-      <QrResult />
+      <QrResult
+        type="Square"
+        ec="H"
+        outerM="#1E5128"
+        innerM="#4E9F3D"
+        colorM="#191A19"
+        outerR={[10, 0, 0, 10]}
+        innerR={[10, 0, 0, 0]}
+        qrbox="fluid"
+        qrM="circle"
+      />
+      <QrResult
+        clO="red"
+        clI="blue"
+        cbO="green"
+        cbI="yellow"
+        crO="pink"
+        crI="skyblue"
+      />
     </div>
   );
 };

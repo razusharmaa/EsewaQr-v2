@@ -1,14 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state
 const initialState = {
-  message: '',
-  type: '', // 'info', 'success', 'failure', 'warning'
+  message: "",
+  type: "", // 'info', 'success', 'failure', 'warning'
 };
 
 // Create the slice
 const alertSlice = createSlice({
-  name: 'alert',
+  name: "alert",
   initialState,
   reducers: {
     setAlert: (state, action) => {
@@ -16,8 +16,8 @@ const alertSlice = createSlice({
       state.type = action.payload.type;
     },
     clearAlert: (state) => {
-      state.message = '';
-      state.type = '';
+      state.message = "";
+      state.type = "";
     },
   },
 });

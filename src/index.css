@@ -13,3 +13,11 @@ body.dark {
   background-color: rgb(23 23 23);
   color: #f1f1f1;
 }
+
+/* Add this to your CSS */
+.z-0 {
+  z-index: 0 !important; /* Set to a lower value than .TE */
+}
+.z-5{
+  z-index: 555 !important; 
+}

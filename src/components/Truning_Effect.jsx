@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { GoDotFill } from "react-icons/go";
 import CSS1 from "../componentCSS/Truning_Effect.module.css";
-import { useDispatch } from "react-redux";
-import { SetMode } from "../features/turningEffect/TeSlice";
+
 
 export default function Truning_Effect() {
-  const dispatch = useDispatch();
+
   const greetingsArray = [
     "Hello", // English
     "नमस्ते", // Nepali
@@ -40,7 +39,7 @@ export default function Truning_Effect() {
       } else {
         setIsFinished(true);
         setTimeout(() => {
-          dispatch(SetMode(true));
+          
         }, 2000);
       }
     };

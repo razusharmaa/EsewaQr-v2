@@ -50,6 +50,7 @@ const Output = () => {
         qrM="circle"
       />
       <QrResult
+      type='Boaring'
         clO="red"
         clI="blue"
         cbO="green"

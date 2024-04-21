@@ -3,11 +3,16 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { Button, Card } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import { IMAGES } from '../images/Images'
+import { useDispatch ,useSelector} from "react-redux";
+import {setBank} from '../features/bankMode/bankSlice'
 
 const Service_type = ({ logo, name, desc }) => {
+  let dispatch = useDispatch()
+  const Bank = useSelector((state) => state.bank);
   let navigate = useNavigate();
   function handleClick() {
     const dataToSend = { type: logo };
+    dispatch(setBank({ SelectedBank: name }))
     navigate("/input", { state: dataToSend });
   }
 

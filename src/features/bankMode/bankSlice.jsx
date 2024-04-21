@@ -1,3 +1,4 @@
+// bankSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state
@@ -12,15 +13,17 @@ const bankSlice = createSlice({
   initialState,
   reducers: {
     setBank: (state, action) => {
-      state.SelectedBank = action.payload.SelectedBank;
-      state.decodedCode = action.payload.decodedCode;
-      // Save to localStorage
-      localStorage.setItem("SelectedBank", action.payload.SelectedBank);
-      localStorage.setItem("decodedCode", action.payload.decodedCode);
+      if (action.payload.SelectedBank !== undefined) {
+        state.SelectedBank = action.payload.SelectedBank;
+        localStorage.setItem("SelectedBank", action.payload.SelectedBank);
+      }
+      if (action.payload.decodedCode !== undefined) {
+        state.decodedCode = action.payload.decodedCode;
+        localStorage.setItem("decodedCode", action.payload.decodedCode);
+      }
     },
     clearField: (state, action) => {
       state[action.payload] = "";
-      // Remove from localStorage
       localStorage.removeItem(action.payload);
     },
   },

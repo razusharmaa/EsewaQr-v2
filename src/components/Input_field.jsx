@@ -5,7 +5,7 @@ import { FileInput, Label } from "flowbite-react";
 import { setAlert } from "../features/alert/alertSlice";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setBank, clearField } from "../features/bankMode/bankSlice";
+import { setBank } from "../features/bankMode/bankSlice";
 
 const Input_field = () => {
   const dispatch = useDispatch();
@@ -13,9 +13,6 @@ const Input_field = () => {
   let navigate = useNavigate();
   let qr = new QrcodeDecoder();
   const [qrResult, setQrResult] = useState(null);
-  const [Uname, setUname] = useState("");
-  const [Unum, setUum] = useState("");
-  const [Decode, setDecode] = useState("");
 
   function resultQR() {
     const dataToSend = { "decoded code": qrResult };

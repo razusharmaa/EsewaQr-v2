@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef,  useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Card, Dropdown } from "flowbite-react";
@@ -57,7 +57,7 @@ export default function QrResult(props) {
       });
       const image = canvas.toDataURL("image/png");
       const link = document.createElement("a");
-      link.download = `${bankName}QR-${name}.png`;
+      link.download = `${Bank.SelectedBank}-${name}.png`;
       link.href = image;
       link.click();
     }

@@ -17,10 +17,9 @@ const Input_field = () => {
   function resultQR() {
     const dataToSend = { "decoded code": qrResult };
     dispatch(setBank({ decodedCode: qrResult }));
-    if(Bank.SelectedBank==='Esewa'){
+    if (Bank.SelectedBank === "Esewa") {
       navigate("/output_E");
-    }
-    else{
+    } else {
       navigate("/output_K");
     }
   }
@@ -51,14 +50,33 @@ const Input_field = () => {
       qr.decodeFromImage(event.target.result)
         .then((res) => {
           console.log("QR decode result", res);
-          if (res) {
-            setQrResult(res.data);
-          } else {
+          try {
+            const resultData = JSON.parse(res.data);
+            if (
+              (Bank.SelectedBank === "Esewa" && resultData && resultData.eSewa_id && resultData.name) ||
+              (Bank.SelectedBank !== "Esewa" && resultData && resultData.Khalti_ID && resultData.name)
+            ) {
+              setQrResult(res.data);
+              
+            } else {
+              dispatch(
+                setAlert({
+                  message: `Uploaded QR code is not of ${Bank.SelectedBank}`,
+                  type: "warning",
+                })
+              );
+            }
+          } catch (err) {
             dispatch(
-              setAlert({ message: "QR decode failed", type: "warning" })
+              setAlert({
+                message: "QR decode error: " + err.message,
+                type: "failure",
+              })
             );
+            console.log("QR decode error", err);
           }
         })
+
         .catch((err) => {
           dispatch(
             setAlert({
@@ -66,14 +84,14 @@ const Input_field = () => {
               type: "failure",
             })
           );
-          console.log("QR decode error", err);
+          
         });
     };
     reader.onerror = (err) => {
       dispatch(
         setAlert({ message: "File read error:" + err, type: "failure" })
       );
-      console.log("File read error", err);
+      
     };
     reader.readAsDataURL(file);
   };

@@ -1,12 +1,14 @@
-import React, { useRef,  useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Card, Dropdown } from "flowbite-react";
 import { QRCode } from "react-qrcode-logo";
 import html2canvas from "html2canvas";
 import { IMAGES } from "../images/Images";
+import domtoimage from "dom-to-image";
+import rasterizeHTML from "rasterizehtml";
 
-export default function QrResult(props) {
+export default function QrResult_khalti(props) {
   let {
     ec,
     outerM,
@@ -46,7 +48,7 @@ export default function QrResult(props) {
 
   // Extracting user info from the bank state
   const userInfo = JSON.parse(Bank.decodedCode || "{}");
-  const { SelectedBank: bankName, eSewa_id, name } = userInfo;
+  const { Khalti_ID, name } = userInfo;
 
   // Function to download the QR code as an image
   const downloadQR = async () => {
@@ -64,9 +66,9 @@ export default function QrResult(props) {
   };
 
   return (
-    <Card className="min-w-72 max-w-sm dark:bg-white text-black">
-      <div className="flex justify-between	 px-4 pt-4">
-        <p className="text-2xl font-bold text-gray-900  ">{type}</p>
+    <Card className="min-w-72 max-w-sm dark:bg-white text-black relative overflow-hidden">
+      <div className="flex justify-between px-4 pt-4">
+        <p className="text-2xl font-bold text-gray-900">{type}</p>
         <Dropdown inline label="">
           <Dropdown.Item>
             <a
@@ -95,8 +97,19 @@ export default function QrResult(props) {
         </Dropdown>
       </div>
 
-      <div ref={qrRef} className="flex flex-col items-center pb-10">
+      <div
+        ref={qrRef}
+        className="pt-5 flex flex-col items-center mb-5 border-none"
+      >
         {/* Render QR code only if qrData is available */}
+        <img
+          src={IMAGES.khaltiLogo}
+          alt="eSewa Logo"
+          className="h-20 object-contain my-3"
+        />
+        <span className="mb-5 text-sm text-gray-500 my-2">
+          Show your QR Code to accept payments
+        </span>
         {Bank.decodedCode && (
           <QRCode
             // Include radius for the inner eye of the top/left eye
@@ -145,7 +158,7 @@ export default function QrResult(props) {
             value={Bank.decodedCode}
             size={256} // Smaller size for display
             {...(qrQ ? { ecLevel: qrQ } : {})}
-            logoImage={IMAGES.QRc_esewa}
+            logoImage={IMAGES.QRc_khalti}
             logoWidth={40}
             logoHeight={40}
             removeQrCodeBehindLogo={true}
@@ -161,17 +174,24 @@ export default function QrResult(props) {
             {...(qrM ? { logoPaddingStyle: "circle" } : {})}
           />
         )}
-        <img
-          src={IMAGES.esewaLogo} 
-          alt="eSewa Logo"
-          className="h-14 object-contain my-3"
-        />
-        <h5 className="mb-1 text-xl font-medium text-gray-900">{name}</h5>
-        <span className="text-base text-gray-700">{eSewa_id}</span>
-        <span className="text-sm text-gray-500 my-2">
-          Scan QR code to receive money
-        </span>
+
+        <h5 className="mt-5 mb-1 text-xl font-medium text-gray-900">{name}</h5>
+        <span className="text-base text-gray-700">{Khalti_ID}</span>
+
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
+          <path
+            fill="#901aeb"
+            fill-opacity="1"
+            d="M -1 121 C 825 284 1042 226 1167 206 C 1280 175 1353 144 1440 96 L 1440 320 L 1392 320 C 1344 320 1248 320 1152 320 C 1056 320 960 320 864 320 C 768 320 672 320 576 320 C 480 320 384 320 288 320 C 192 320 96 320 48 320 L 0 320 Z Z"
+          ></path>
+          <path
+            fill="#c99deb"
+            fill-opacity="1"
+            d="M -1 132 C 825 284 1042 226 1167 206 C 1280 175 1353 144 1440 96 C 1129 270 825 289 -3 70 Z Z"
+          ></path>
+        </svg>
       </div>
+
       <div className="w-full flex justify-center gap-4">
         <button
           onClick={() => navigate("/edit")}

@@ -6,12 +6,12 @@ const Home = () => {
     <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4">
       <Service_type
         logo={"esewaLogo"}
-        name={"Esewa Qr"}
+        name={"Esewa"}
         desc={"Customize your eSewa Qr code"}
       />
       <Service_type
         logo={"khaltiLogo"}
-        name={"Khalti Qr"}
+        name={"Khalti"}
         desc={"Customize your Khalti Qr code"}
       />
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Button, Checkbox, TextInput, Label } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, TextInput, Label } from "flowbite-react";
 import { setAlert } from "../features/alert/alertSlice";
 import { setBank } from "../features/bankMode/bankSlice";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ export default function InputArea() {
   let navigate = useNavigate();
   const [qrdata, setQrData] = useState("");
   const dispatch = useDispatch();
+  const Bank = useSelector((state) => state.bank);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [decode, setDecode] = useState("");
@@ -35,15 +36,19 @@ export default function InputArea() {
     ) {
       dispatch(
         setAlert({
-          message: "Number must be a 10-digit number starting with 97 or 98.",
+          message: "Number must be a 10-digit ",
           type: "warning",
         })
       );
     } else {
-      const data = {
-        eSewa_id: number,
-        name: name,
-      };
+      let data;
+      if (Bank.SelectedBank === "Esewa") {
+        data = { eSewa_id: number, name: name };
+      }
+      else{
+        data = { Khalti_ID: number, name: name };
+      }
+
       setQrData(JSON.stringify(data));
     }
   };
@@ -66,7 +71,7 @@ export default function InputArea() {
     if (!parsedDecode.eSewa_id || !parsedDecode.name) {
       dispatch(
         setAlert({
-          message: "Decoded code must contain 'eSewa_id' and 'name'.",
+          message: `Decoded code must contain '${Bank.SelectedBank}' and 'name'.`,
           type: "warning",
         })
       );
@@ -82,7 +87,7 @@ export default function InputArea() {
       dispatch(
         setAlert({
           message:
-            "'eSewa_id' must be a 10-digit number starting with 97 or 98.",
+            `'${Bank.SelectedBank}' must be a 10-digit number starting with 97 or 98.`,
           type: "warning",
         })
       );
@@ -94,7 +99,12 @@ export default function InputArea() {
   useEffect(() => {
     if (qrdata) {
       dispatch(setBank({ decodedCode: qrdata }));
-      navigate("/output", { state: qrdata });
+      if(Bank.SelectedBank==='Esewa'){
+        navigate("/output_E");
+      }
+      else{
+        navigate("/output_K");
+      }
     }
   }, [qrdata]);
 
@@ -106,11 +116,11 @@ export default function InputArea() {
           className="w-full md:w-2/5 flex flex-col gap-4 mb-4 md:mb-0 md:mr-2"
         >
           <p className="py-1 text-xl font-mono font-medium">
-            Fill your eSewa details
+            Fill your {Bank.SelectedBank} Qr details
           </p>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="email1" value="eSewa Name" />
+              <Label htmlFor="email1" value={`${Bank.SelectedBank} Name`} />
             </div>
             <TextInput
               id="text"
@@ -123,7 +133,7 @@ export default function InputArea() {
           </div>
           <div>
             <div className="mb-2 block ">
-              <Label htmlFor="number" value="eSewa Number" />
+              <Label htmlFor="number" value={`${Bank.SelectedBank} Number`} />
             </div>
             <TextInput
               id="number"
@@ -142,7 +152,7 @@ export default function InputArea() {
           className="w-full md:w-2/5 flex flex-col gap-4 md:ml-2"
         >
           <p className="py-1 text-xl font-mono font-medium">
-            Input your decode code of esewa only:
+            Input your decode code of {Bank.SelectedBank} Qr only:
           </p>
           <div>
             <div className="mb-2 block">
@@ -151,7 +161,11 @@ export default function InputArea() {
             <TextInput
               id="text"
               type="text"
-              placeholder='{"eSewa_id":"9819898080","name":"Ranju Thakur"}'
+              placeholder={
+                Bank.SelectedBank === "Esewa"
+                  ? '{"eSewa_id:"9819898080","name":"Ranju Thakur"}'
+                  : '{"Khalti_ID":"9819898080","name":"Ranju Thakur"}'
+              }
               value={decode}
               onChange={(e) => {
                 setDecode(e.target.value);

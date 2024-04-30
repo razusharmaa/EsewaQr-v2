@@ -6,9 +6,10 @@ import Navbar_Main from "./components/Navbar_Main";
 import Home from "./components/Home";
 import Input_field from "./components/Input_field";
 import AlertMain from "./components/AlertMain";
-import Output from "./components/Output";
 import FooterM from "./components/FooterM";
 import Truning_Effect from "./components/Truning_Effect";
+import Output_E from "./components/Output_E";
+import Output_K from "./components/Output_K";
 
 const App = () => {
   return (
@@ -21,7 +22,8 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/input" element={<Input_field />} />
-            <Route exact path="/output" element={<Output />} />
+            <Route exact path="/output_E" element={<Output_E />} />
+            <Route exact path="/output_K" element={<Output_K />} />
           </Routes>
         </div>
         <FooterM />

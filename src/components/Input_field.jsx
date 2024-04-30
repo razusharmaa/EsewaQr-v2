@@ -17,7 +17,12 @@ const Input_field = () => {
   function resultQR() {
     const dataToSend = { "decoded code": qrResult };
     dispatch(setBank({ decodedCode: qrResult }));
-    navigate("/output", { state: dataToSend });
+    if(Bank.SelectedBank==='Esewa'){
+      navigate("/output_E");
+    }
+    else{
+      navigate("/output_K");
+    }
   }
 
   useEffect(() => {

@@ -3,7 +3,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Add your global styles, including theme-specific styles */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body.light {
   background-color: #ebeaea;
   color: #000;

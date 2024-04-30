@@ -23,7 +23,7 @@ const Service_type = ({ logo, name, desc }) => {
       imgSrc={IMAGES[logo]} // Use bracket notation here
     >
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        {name}
+        {name} Qr
       </h5>
       <p className="font-normal text-gray-700 dark:text-gray-400">{desc} </p>
 

@@ -1,18 +1,18 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import QrResult from "./QrResult";
+import {useSelector } from "react-redux";
+import QrResult_esewa from "./QrResult_esewa";
 
-const Output = () => {
+const Output_E = () => {
   const bank = useSelector((state) => state.bank);
   const location = useLocation();
   const data = location.state; // Accessing the state
 
   return (
     <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <QrResult type="Default" qrM="circle" />
+      <QrResult_esewa type="Default" qrM="circle" />
 
-      <QrResult
+      <QrResult_esewa
         type="Classic"
         tleO={[10, 10, 0, 10]}
         tleI={[10, 10, 0, 10]}
@@ -27,7 +27,7 @@ const Output = () => {
         qrM="circle"
       />
 
-      <QrResult
+      <QrResult_esewa
         type="Gol Gol"
         ec="Q"
         outerM="#2C7865"
@@ -38,7 +38,7 @@ const Output = () => {
         qrM="circle"
         colorM="#23a646"
       />
-      <QrResult
+      <QrResult_esewa
         type="Square"
         ec="H"
         outerM="#1E5128"
@@ -49,7 +49,7 @@ const Output = () => {
         qrbox="fluid"
         qrM="circle"
       />
-      <QrResult
+      <QrResult_esewa
       type='Boaring'
         clO="red"
         clI="blue"
@@ -62,4 +62,4 @@ const Output = () => {
   );
 };
 
-export default Output;
+export default Output_E;

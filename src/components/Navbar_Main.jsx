@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../features/theme/themeSlice"; // Adjust the import path as needed
 import { Navbar, DarkThemeToggle } from "flowbite-react";
 import { IMAGES } from "../images/Images";
+import { Link } from "react-router-dom";
 
 const Navbar_Main = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -20,7 +21,7 @@ const Navbar_Main = () => {
 
   return (
     <Navbar fluid>
-      <Navbar.Brand href="https://flowbite-react.com">
+      <Navbar.Brand >
         <img
           src={IMAGES.Navlogo} 
           className="mr-3 h-6 sm:h-9"
@@ -43,10 +44,9 @@ const Navbar_Main = () => {
         <Navbar.Link href="#" active>
           Home
         </Navbar.Link>
-        <Navbar.Link href="#">About</Navbar.Link>
-        <Navbar.Link href="#">Services</Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <Navbar.Link as={Link} to='/about' >About</Navbar.Link>
+        <Navbar.Link href="https://razusharmaa.github.io/Esewa-QrGenerator/">Switch to V1</Navbar.Link>
+        <Navbar.Link href="#">More tool</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

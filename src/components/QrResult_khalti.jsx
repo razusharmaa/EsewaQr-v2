@@ -178,7 +178,7 @@ export default function QrResult_khalti(props) {
         <h5 className="mt-5 mb-1 text-xl font-medium text-gray-900">{name}</h5>
         <span className="text-base text-gray-700">{Khalti_ID}</span>
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 317">
           <path
             fill="#901aeb"
             fill-opacity="1"

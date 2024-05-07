@@ -99,7 +99,7 @@ export default function QrResult_khalti(props) {
 
       <div
         ref={qrRef}
-        className="pt-5 flex flex-col items-center mb-5 border-none"
+        className="pt-5 m-0 flex flex-col items-center border-none"
       >
         {/* Render QR code only if qrData is available */}
         <img
@@ -178,7 +178,7 @@ export default function QrResult_khalti(props) {
         <h5 className="mt-5 mb-1 text-xl font-medium text-gray-900">{name}</h5>
         <span className="text-base text-gray-700">{Khalti_ID}</span>
 
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 317">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 318">
           <path
             fill="#901aeb"
             fill-opacity="1"
@@ -192,7 +192,7 @@ export default function QrResult_khalti(props) {
         </svg>
       </div>
 
-      <div className="w-full flex justify-center gap-4">
+      <div className="w-full flex justify-center gap-4 mt-5">
         <button
           onClick={() => navigate("/edit")}
           className="inline-flex items-center rounded-lg bg-cyan-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
